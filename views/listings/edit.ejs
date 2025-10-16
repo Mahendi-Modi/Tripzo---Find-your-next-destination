@@ -1,0 +1,142 @@
+<% layout("/layouts/boilerplate")%>
+<body>
+  <div class="row mt-3">
+    <div class="col col-8 offset-2">
+      <h3>Edit your Listing</h3>
+      <form
+        method="post"
+        action="/listings/<%=listing._id%>?_method=PATCH"
+        class="needs-validation"
+        novalidate
+        enctype="multipart/form-data"
+      >
+        <div class="mb-3">
+          <label for="title" class="form-label">Title</label>
+          <input
+            id="title"
+            type="text"
+            name="title"
+            value="<%=listing.title%>"
+            class="form-control"
+            required
+          />
+          <div class="valid-feedback">Title looks good!</div>
+        </div>
+
+        <div class="mb-3">
+          <label for="description" class="form-label">Description</label>
+          <textarea id="description" name="description" class="form-control">
+<%=listing.description%> </textarea
+          >
+          <div class="invalid-feedback">Please enter a short description</div>
+        </div>
+
+        <div class="mb-3">
+          Original Listing Image <br />
+          <img
+            src="<%=originalImageUrl%>"
+            alt="listing_mage"
+            class="edit-img"
+          />
+        </div>
+
+        <div class="mb-3">
+          <label for="image" class="form-label">Upload Image</label>
+          <input id="image" type="file" name="image" class="form-control" />
+          <div class="invalid-feedback">Please enter valid image link</div>
+        </div>
+
+        <div class="mb-3">
+          <%if(listing.category || listing.category.length < 0){%>
+          <label for="category" class="form-label">Category</label>
+          <select id="category" name="category" class="form-select">
+            <option selected disabled><%=listing.category%></option>
+            <option value="Trending">Trending</option>
+            <option value="Rooms">Rooms</option>
+            <option value="Iconic Cities">Iconic Cities</option>
+            <option value="Mountains">Mountains</option>
+            <option value="Castles">Castles</option>
+            <option value="Amazing Pools">Amazing Pools</option>
+            <option value="Camping">Camping</option>
+            <option value="Farms">Farms</option>
+            <option value="Arctic">Arctic</option>
+            <option value="Domes">Domes</option>
+            <option value="Island">Island</option>
+          </select>
+          <%}%>
+          <div class="invalid-feedback">Category should be selected!</div>
+        </div>
+
+        <div class="row">
+          <div class="mb-3 col-md-4">
+            <label for="price" class="form-label">Price</label>
+            <input
+              id="price"
+              type="number"
+              name="price"
+              value="<%=listing.price%>"
+              class="form-control"
+              required
+            />
+            <div class="invalid-feedback">Price should be valid</div>
+          </div>
+
+          <div class="mb-3 col-md-8">
+            <label for="location" class="form-label">Location</label>
+            <input
+              id="location"
+              type="text"
+              name="location"
+              value="<%=listing.location%>"
+              class="form-control"
+              required
+            />
+            <div class="invalid-feedback">Location should be valid</div>
+          </div>
+        </div>
+
+        <div class="mb-3">
+          <label for="country" class="form-label">Country</label>
+          <input
+            id="country"
+            type="text"
+            name="country"
+            value="<%=listing.country%>"
+            class="form-control"
+            required
+          />
+          <div class="invalid-feedback">Country should be valid</div>
+        </div>
+
+        <div class="mt-4 mb-5">
+          <button class="btn btn-dark edit-btn">Edit</button>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <script>
+    (function () {
+      "use strict";
+
+      // Fetch all the forms we want to apply custom Bootstrap validation styles to
+      var forms = document.querySelectorAll(".needs-validation");
+
+      // Loop over them and prevent submission
+      Array.prototype.slice.call(forms).forEach(function (form) {
+        form.addEventListener(
+          "submit",
+          function (event) {
+            if (!form.checkValidity()) {
+              event.preventDefault();
+              event.stopPropagation();
+            }
+
+            form.classList.add("was-validated");
+          },
+          false
+        );
+      });
+    })();
+  </script>
+</body>
