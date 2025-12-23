@@ -1,23 +1,23 @@
 # Tripzo-Find your next destination
 Tripzo is a full-stack travel discovery web application that allows users to explore destinations, create listings, and share reviews. The project focuses on secure authentication, authorization, data validation, and cloud-based image uploads using a structured MVC architecture.
 
-Features
+# Features
 
-Browse travel destinations
+1. Browse travel destinations
 
-User registration and login
+2. User registration and login
 
-Create, edit, and delete destination listings
+3. Create, edit, and delete destination listings
 
-Add reviews and ratings
+4. Add reviews and ratings
 
-Secure authentication and authorization
+5. Secure authentication and authorization
 
-Image uploads with cloud storage
+6. Image uploads with cloud storage
 
-Server-side data validation
+7. Server-side data validation
 
-Tech Stack
+# Tech Stack
 
 Frontend: EJS, HTML, CSS, Bootstrap
 
